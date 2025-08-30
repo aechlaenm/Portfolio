@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Nice scrollbar (WebKit) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(123,92,255,0.6), rgba(60,39,178,0.6));
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: #0b0b12;
+}
+
+/* Bubble mask utility */
+.bubble-mask {
+  -webkit-mask-image: radial-gradient(circle at center, black 65%, transparent 66%);
+  mask-image: radial-gradient(circle at center, black 65%, transparent 66%);
+}
+
+.bubble-shadow {
+  filter: drop-shadow(0 0 20px rgba(123,92,255,0.45));
+}
+
+/* Modal backdrop blur */
+.backdrop-blur-strong {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* ===== Corner runner animated border ===== */
+.corner-runner {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem; /* ~ rounded-xl */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.corner-runner::before {
+  content: "";
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(16,255,122,1),
+    rgba(180,255,201,1),
+    rgba(16,255,122,1)
+  );
+  animation: rotate-gradient 3.2s linear infinite;
+  /* Mask to show only border (stroke-like) */
+  -webkit-mask:
+    radial-gradient(circle at top left, transparent 0, transparent 14px, black 15px) top left,
+    radial-gradient(circle at top right, transparent 0, transparent 14px, black 15px) top right,
+    radial-gradient(circle at bottom left, transparent 0, transparent 14px, black 15px) bottom left,
+    radial-gradient(circle at bottom right, transparent 0, transparent 14px, black 15px) bottom right,
+    linear-gradient(black, black);
+  -webkit-mask-size: 50% 50%, 50% 50%, 50% 50%, 50% 50%, calc(100% - 6px) calc(100% - 6px);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  mask:
+    radial-gradient(circle at top left, transparent 0, transparent 14px, black 15px) top left,
+    radial-gradient(circle at top right, transparent 0, transparent 14px, black 15px) top right,
+    radial-gradient(circle at bottom left, transparent 0, transparent 14px, black 15px) bottom left,
+    radial-gradient(circle at bottom right, transparent 0, transparent 14px, black 15px) bottom right,
+    linear-gradient(black, black);
+  mask-size: 50% 50%, 50% 50%, 50% 50%, 50% 50%, calc(100% - 6px) calc(100% - 6px);
+  mask-repeat: no-repeat;
+}
+
+.copy-chip {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  left: 10px;
+  top: 80px;
+  width: 3px;
+  height: 60vh;
+  background: linear-gradient(to bottom, rgba(123,92,255,0.35), rgba(255,255,255,0.08));
+  border-radius: 9999px;
+  z-index: 30;
+  overflow: visible;
+}
+.scroll-progress-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  box-shadow: 0 0 16px rgba(123,92,255,0.8);
+  background: #7b5cff;
+}
+
+
+@keyframes reviewdash {
+  to { stroke-dashoffset: -560; }
+}
