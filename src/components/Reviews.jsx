@@ -1,9 +1,9 @@
 import React from 'react'
 
 const data = [
-  { name: 'Kai',  title: 'Game Producer',     quote: 'Delivered beyond expectations. The hover stability system is chef’s kiss — smooth and robust.', rating: 5 },
-  { name: 'Mira', title: 'Tech Lead',         quote: 'Fast, communicative, and creative. Our players felt the difference immediately.',              rating: 5 },
-  { name: 'Joon', title: 'Creative Director', quote: 'Refined UI and delightful animations. Would absolutely work together again.',                   rating: 5 },
+  { name: 'Maddog',  title: 'Roblox Developer',     quote: 'Aechlaenm did a very great job. The work was fast and perfect. Highly recommended!', rating: 5 },
+  { name: 'oczylez', title: 'Roblox Developer',         quote: 'The work was delivered quickly and was of exceptional quality.',              rating: 5 },
+  { name: 'Tua', title: 'Roblox Developer', quote: 'Delivered fast and reliable results. Definitely I’d hire again.',                   rating: 5 },
 ]
 
 function Stars({ count = 5 }) {
