@@ -19,11 +19,11 @@ export const projects = [
     media: [
       {
         type: 'video',
-        src: "https://cdn.discordapp.com/attachments/1358092627060330669/1358871012929831052/2025-04-08_01-19-06.mp4?ex=68b342c0&is=68b1f140&hm=4e4effc6c8d16eb55346f89236625253143976c75851cdc8ac1677c87ca77428"
+        src: "https://cdn.discordapp.com/attachments/1358092627060330669/1358871012929831052/2025-04-08_01-19-06.mp4?ex=68b49440&is=68b342c0&hm=7d5a78732fba65c5956b639f1a7d4b24e34f2813cd098ebcd22d628dd1aaaa47&"
       },
       {
         type: 'video',
-        src: "https://cdn.discordapp.com/attachments/1358092627060330669/1385252206521094255/Roblox-2025-06-19T13_35_19.941Z.mp4?ex=68b3a766&is=68b255e6&hm=aa27f86c1358d546e84c0f59d3e3607c41b36b2c1a24996f86f6acb4ddc48833&+*"
+        src: "https://cdn.discordapp.com/attachments/1358092627060330669/1385252206521094255/Roblox-2025-06-19T13_35_19.941Z.mp4?ex=68b4f8e6&is=68b3a766&hm=fc68055fa7f28b4f7d8344e46e512bcde2186dd907d76bb153d97900252eea17&"
       }
     ]
   },

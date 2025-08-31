@@ -36,7 +36,7 @@ export default function About() {
         <h3 className="text-xl font-semibold">Capabilities</h3>
         <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-white/70">
           <li className="bg-white/5 rounded-lg p-3">Leadership</li>
-          <li className="bg-white/5 rounded-lg p-3">Responsibility</li>
+          <li className="bg-white/5 rounded-lg p-3">Commitment</li>
           <li className="bg-white/5 rounded-lg p-3">Fast work</li>
           <li className="bg-white/5 rounded-lg p-3">Quality work</li>
           <li className="bg-white/5 rounded-lg p-3">Backend</li>
