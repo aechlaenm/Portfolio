@@ -1,7 +1,7 @@
 import tankVideo from '../assets/videos/TankSystem.mp4'
 import heliVideo1 from '../assets/videos/HeliSystem1.mp4'
 import heliVideo2 from '../assets/videos/HeliSystem2.mp4'
-import vehicleVideo from '../assets/videos/vehicleSystem.mp4'
+import vehicleVideo from '../assets/videos/VehicleSystem.mp4'
 import pikapikaVideo from '../assets/videos/PikaPikaSystem.mp4'
 
 export const projects = [
