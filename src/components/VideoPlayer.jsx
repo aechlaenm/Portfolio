@@ -4,10 +4,10 @@ import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react'
 export default function VideoPlayer({
   src,
   poster,
-  autoPlay = true,   // try to autoplay
+  autoPlay = true,  
   loop = true,
-  muted = false,     // NOT muted by default (user requested)
-  compact = false,   // simpler UI on grid cards
+  muted = false,    
+  compact = false, 
 }) {
   const videoRef = React.useRef(null)
   const [playing, setPlaying] = React.useState(false)
@@ -22,7 +22,7 @@ export default function VideoPlayer({
     if (!v) return
     const onLoaded = () => {
       setDuration(v.duration || 0)
-      v.playbackRate = 1 // always normal speed
+      v.playbackRate = 1
       if (autoPlay) {
         v.muted = mutedState
         v.volume = volume
@@ -30,7 +30,6 @@ export default function VideoPlayer({
           setPlaying(true)
           setAutoplayBlocked(false)
         }).catch(() => {
-          // Browser blocked autoplay (often when NOT muted)
           setPlaying(false)
           setAutoplayBlocked(true)
         })
@@ -71,7 +70,6 @@ export default function VideoPlayer({
   const toggleMute = () => {
     setMutedState(m => !m)
     if (autoplayBlocked) {
-      // a user interaction happened; try to play now
       const v = videoRef.current
       v && v.play().then(() => setPlaying(true)).catch(() => {})
       setAutoplayBlocked(false)
