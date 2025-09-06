@@ -1,12 +1,13 @@
 import React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
-import BoxCarousel from './BubbleCarousel.jsx' // change to './BubbleCarousel.jsx' if that's your filename
+import BoxCarousel from './BubbleCarousel.jsx'
+import PreviewVideo from './PreviewVideo.jsx'
 
 export default function ProjectGrid({ projects = [] }) {
   const [openId, setOpenId] = React.useState(null)
   const [page, setPage] = React.useState(0)
-  const [direction, setDirection] = React.useState(1) // 1 = next, -1 = prev
+  const [direction, setDirection] = React.useState(1)
 
   const pageSize = 6
   const pages = Math.max(1, Math.ceil(projects.length / pageSize))
@@ -28,35 +29,24 @@ export default function ProjectGrid({ projects = [] }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [current])
 
-  // Page slide uses a spring (smooth + snappy)
   const pageVariants = {
-    enter: (dir) => ({
-      opacity: 0,
-      x: dir > 0 ? 56 : -56,
-      scale: 0.985,
-    }),
+    enter: (dir) => ({ opacity: 0, x: dir > 0 ? 56 : -56, scale: 0.985 }),
     center: {
-      opacity: 1,
-      x: 0,
-      scale: 1,
+      opacity: 1, x: 0, scale: 1,
       transition: { type: 'spring', stiffness: 380, damping: 32, mass: 0.6 }
     },
     exit: (dir) => ({
-      opacity: 0,
-      x: dir > 0 ? -56 : 56,
-      scale: 0.985,
+      opacity: 0, x: dir > 0 ? -56 : 56, scale: 0.985,
       transition: { type: 'spring', stiffness: 420, damping: 30, mass: 0.6 }
     }),
   }
 
-  // Card hover spring (super smooth, no layout shift)
   const cardHover = {
-    rest: { y: 0, scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)', transition: { type: 'spring', stiffness: 400, damping: 30 } },
+    rest:  { y: 0, scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)', transition: { type: 'spring', stiffness: 400, damping: 30 } },
     hover: { y: -4, scale: 1.01, boxShadow: '0 16px 48px rgba(124,58,237,0.20)', transition: { type: 'spring', stiffness: 400, damping: 26 } }
   }
-
   const mediaHover = {
-    rest: { scale: 1, transition: { type: 'spring', stiffness: 380, damping: 28 } },
+    rest:  { scale: 1, transition: { type: 'spring', stiffness: 380, damping: 28 } },
     hover: { scale: 1.02, transition: { type: 'spring', stiffness: 380, damping: 24 } }
   }
 
@@ -85,31 +75,23 @@ export default function ProjectGrid({ projects = [] }) {
                     variants={cardHover}
                     style={{ willChange: 'transform' }}
                   >
-                    {/* Media preview: clean video/image with subtle scale on hover */}
                     <motion.div
                       className="relative aspect-video rounded-xl overflow-hidden ring-1 ring-white/10 mb-4"
                       variants={mediaHover}
                     >
                       {p.media?.[0]?.type === 'video' ? (
-                        <video
-                          src={p.media[0].src}
+                        <PreviewVideo
+                          fullSrc={p.media[0].src}
                           poster={p.media[0].poster}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
                           className="w-full h-full object-cover pointer-events-none"
-                          aria-hidden="true"
                         />
                       ) : (
                         <img
                           src={p.media?.[0]?.src}
                           alt={p.title}
                           className="w-full h-full object-cover pointer-events-none"
-                          aria-hidden="true"
                         />
                       )}
-                      {/* soft top gradient for depth */}
                       <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                     </motion.div>
 
@@ -128,7 +110,6 @@ export default function ProjectGrid({ projects = [] }) {
           </AnimatePresence>
         </div>
 
-        {/* BOTTOM pagination bar */}
         {projects.length > pageSize && (
           <div className="mt-6 flex items-center justify-between">
             <button onClick={prevPage} className="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 flex items-center gap-2">
@@ -155,7 +136,6 @@ export default function ProjectGrid({ projects = [] }) {
         )}
       </div>
 
-      {/* Modal */}
       {current && (
         <div
           className="fixed inset-0 z-50 bg-black/60 backdrop-blur-strong flex items-center justify-center p-4"
